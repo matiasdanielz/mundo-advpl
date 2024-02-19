@@ -1,0 +1,22 @@
+<po-page-default p-title="Conversor de Query">
+    <po-widget>
+        <po-info class="po-md-12 " p-value="Insira no campo a ESQUERDA uma consulta no formato SQL e a mesma sera convertida no formato ADVPL de sua escolha, dentre eles: 'TcQuery' e 'BeginSQL'"> </po-info>
+        <po-divider></po-divider>
+        <div>
+            <po-select #queryTypeSelect class="po-md-6" name="state" p-label="Tipo de query" [p-options]="queryOptions">
+            </po-select>
+            <po-button p-label="Converter" class="po-md-6 searchButton" p-kind="primary"
+                (p-click)="queryTypeSelect.selectedValue == 1 ? convertSqlToTcQuery() : convertSqlToBeginSql()"> </po-button>
+        </div>
+        <div name="queries" class="po-row">
+            <div name="request" class="po-md-6">
+                <po-code-editor class="po-md-12" name="textarea" p-label="Resposta" [p-height]="windowHeight" p-theme="vs-dark" p-language="sql" [(ngModel)]="queryRequest">
+                </po-code-editor>
+            </div>
+            <div name="response" class="po-md-6">
+                <po-code-editor class="po-md-12" name="textarea" p-label="Resposta" [p-height]="windowHeight" p-theme="vs-dark" p-language="c" [(ngModel)]="queryResponse" [p-readonly]="true">
+                </po-code-editor>
+            </div>
+        </div>
+    </po-widget>
+</po-page-default>
